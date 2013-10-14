@@ -1,0 +1,20 @@
+---
+
+- hosts: all
+  sudo: yes
+
+  tasks:
+    - name: get up to date
+      apt: update_cache=yes upgrade=dist
+
+    - name: install standard packages
+      apt: pkg={{item}}
+      with_items:
+        - git
+        - build-essential
+        - vim
+        - tmux
+        - python-software-properties
+        - htop
+        - iftop
+
